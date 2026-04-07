@@ -5,7 +5,8 @@ import { getElement, select, listen } from './utils.js';
 const targetWord = getElement('current-word');
 const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
-const timeCounter = getElement('time-remining');
+const timeCounter = getElement('time-remaining');
+const gameMessage = getElement ('game-status');
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money',
@@ -34,12 +35,55 @@ const displayWord = function () {
   targetWord.innerText = nextWord;
 }
 
+
+let timeLeft = 99;
+let timer = null;
+let gameRunning = false;
+
 const startGame = function () {
+  gameMessage.innerText = 'Go!';
+  gameRunning = true;
+  startBtn.innerText = 'Stop';
+  timeLeft = 99;
+  timeCounter.innerText = timeLeft;
   displayWord();
   inputField.value = '';
   inputField.disabled = false;
   inputField.focus();  // this is to put the cursor in the input field   
+  startCountdown();
+
 }
+
+
+function startCountdown() {
+  timer = setTimeout(() => {
+    timeLeft--;
+    timeCounter.innerText = timeLeft;
+
+    if (timeLeft <= 0) {
+      stopGame('Game Over!');
+    } else {
+      startCountdown();
+    }
+  }, 1000);
+}
+
+
+const stopGame = function (message) {
+  gameRunning = false;
+  clearTimeout(timer);
+
+  inputField.disabled = true;
+  inputField.value = '';
+
+  gameMessage.innerText = message;
+  targetWord.innerText = '';
+  targetWord.style.color = 'black';
+
+  startBtn.innerText = 'Start';
+};
+
+
 
 const checkWord = function () {
   const typed = inputField.value.trim();
@@ -62,8 +106,16 @@ const checkWord = function () {
 
 }
 
+listen('click', startBtn, () => {
+  if (!gameRunning) {
+    startGame();
+  } else {
+    timeLeft = 99;               
+    timeCounter.innerText = 99;  
+    stopGame('Play Again!'); 
+  }
+});
 
-listen('click', startBtn, startGame);
 listen('input', inputField, checkWord)
 
 
