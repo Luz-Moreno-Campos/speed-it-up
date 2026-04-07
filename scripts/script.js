@@ -40,7 +40,18 @@ const startGame = function() {
   inputField.focus();  // this is to put the cursor in the input field   
 }
 
+const checkWord = function () {
+  const typed = inputField.value.trim();
+  const current = targetWord.innerText.trim();
+
+  if (typed === current) {
+    displayWord();          
+    inputField.value = '';  
+  }
+};
+
 listen('click', startBtn, startGame);
+listen('input', inputField, checkWord)
 
 
 
