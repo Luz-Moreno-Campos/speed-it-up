@@ -31,13 +31,16 @@ const getRandomWord = function (words) {
 }
 
 const displayWord = function () {
-  const nextWord = getRandomWord(words);
-  targetWord.innerText = nextWord;
 
   if (words.length === 0) {
     stopGame('Game Over!');
     return;
   }
+
+  const nextWord = getRandomWord(words);
+  targetWord.innerText = nextWord;
+
+
 
 }
 
