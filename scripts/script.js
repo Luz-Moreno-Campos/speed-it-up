@@ -6,7 +6,7 @@ const targetWord = getElement('current-word');
 const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
 const timeCounter = getElement('time-remaining');
-const gameMessage = getElement ('game-status');
+const gameMessage = getElement('game-status');
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money',
@@ -33,6 +33,12 @@ const getRandomWord = function (words) {
 const displayWord = function () {
   const nextWord = getRandomWord(words);
   targetWord.innerText = nextWord;
+
+  if (words.length === 0) {
+    stopGame('Game Over!');
+    return;
+  }
+
 }
 
 
@@ -110,9 +116,9 @@ listen('click', startBtn, () => {
   if (!gameRunning) {
     startGame();
   } else {
-    timeLeft = 99;               
-    timeCounter.innerText = 99;  
-    stopGame('Play Again!'); 
+    timeLeft = 99;
+    timeCounter.innerText = 99;
+    stopGame('Play Again!');
   }
 });
 
