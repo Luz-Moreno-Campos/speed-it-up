@@ -5,6 +5,7 @@ import { getElement, select, listen } from './utils.js';
 const targetWord = getElement('current-word');
 const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
+const timeCounter = getElement('time-remining');
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money',
@@ -21,7 +22,7 @@ const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'leather', 'planet', 'software', 'update', 'yellow', 'keyboard', 'window'];
 
 
-inputField.disabled =true; 
+inputField.disabled = true;
 
 const getRandomWord = function (words) {
   const nextWordIndex = Math.floor(Math.random() * words.length)
@@ -33,10 +34,10 @@ const displayWord = function () {
   targetWord.innerText = nextWord;
 }
 
-const startGame = function() {
-  displayWord();       
+const startGame = function () {
+  displayWord();
   inputField.value = '';
-  inputField.disabled = false; 
+  inputField.disabled = false;
   inputField.focus();  // this is to put the cursor in the input field   
 }
 
@@ -45,10 +46,22 @@ const checkWord = function () {
   const current = targetWord.innerText.trim();
 
   if (typed === current) {
-    displayWord();          
-    inputField.value = '';  
+    inputField.style.color = 'green';
+    displayWord();
+    inputField.value = '';
+    inputField.style.color = 'black';
+    return;
+
+  } else if (!current.startsWith(typed)) {
+    inputField.style.color = 'red';
   }
-};
+
+  else {
+    inputField.style.color = 'green';
+  }
+
+}
+
 
 listen('click', startBtn, startGame);
 listen('input', inputField, checkWord)
