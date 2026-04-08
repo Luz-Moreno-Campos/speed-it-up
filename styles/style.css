@@ -21,4 +21,33 @@ body {
     align-items: center;
     color: white;
 }
+<<<<<<< HEAD
 >>>>>>> b384aab (edit the body part)
+=======
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 220px;
+    max-width: 90%;
+    animation: float 3s ease-in-out infinite;
+}
+
+#game-box {
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    animation: fadeIn 0.8s ease;
+}
+>>>>>>> 08c1ad1 (set the logo)
