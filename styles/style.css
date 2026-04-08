@@ -1,2 +1,178 @@
+@charset "utf-8";
+@import "./reset.css";
 
+* {
+    box-sizing: border-box;
+}  
+    
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    background-image: radial-gradient(#333 10%, transparent 10%);
+    background-size: 20px 20px;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 220px;
+    max-width: 90%;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+
+#game-box {
+    background: rgba(25, 25, 25, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    animation: fadeIn 0.8s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+
+#game-box p, 
+#game-box #timer, 
+#game-box #hits {
+    color: #ffffff; 
+    font-size: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+#game-box #time-remaining {
+    font-weight: bold;
+    color: #ffd166; 
+}
+
+#game-box #hits-count {
+    font-weight: bold;
+    color: #06d6a0; 
+}
+
+#game-box #current-word {
+    font-size: 42px;
+    font-weight: 900;
+    margin: 10px 0;
+    padding: 20px;
+    width: 100%;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    min-height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#game-box #word-input {
+    width: 100%;
+    max-width: 350px;
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    background: #1a1a1a;
+    color: white;
+    outline: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#game-box #word-input:focus {
+    border-color: #ff006e;
+    box-shadow: 0 0 15px rgba(255, 0, 110, 0.3);
+}
+
+button#start-btn {
+    padding: 15px 45px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: none;
+    background: #ff006e;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button#start-btn:hover {
+    transform: scale(1.05);
+    background: #fb5607;
+}
+
+
+#game-over-overlay.hidden {
+    display: none;
+}
+
+#game-over-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#game-over-box {
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid #ff006e;
+    width: 90%;
+    max-width: 400px;
+}
+
+
+@media (max-width: 500px) {
+    #game-box {
+        padding: 20px;
+    }
+    #game-box #current-word {
+        font-size: 30px;
+    }
+}
 
