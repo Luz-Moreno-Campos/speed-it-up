@@ -8,10 +8,12 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #121212;
-    background-image: radial-gradient(#333 10%, transparent 10%);
-    background-size: 20px 20px;
-    background-attachment: fixed;
+   
+    background-image: url("../media/background-image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: center;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -40,8 +42,9 @@ main {
 }
 
 .logo img {
-    width: 220px;
-    max-width: 90%;
+    width: 350px;
+    max-width: 100%;
+    padding: 20px;
     animation: float 3s ease-in-out infinite;
 }
 
@@ -52,7 +55,9 @@ main {
 
 
 #game-box {
+     background: none !important;
     background: rgba(25, 25, 25, 0.9);
+    backdrop-filter: blur(20px);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
@@ -88,7 +93,7 @@ main {
 }
 
 #game-box #current-word {
-    font-size: 42px;
+    font-size: 30px;
     font-weight: 900;
     margin: 10px 0;
     padding: 20px;

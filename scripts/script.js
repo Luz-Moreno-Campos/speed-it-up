@@ -87,7 +87,7 @@ const stopGame = function (message) {
 
   gameMessage.innerText = message;
   targetWord.innerText = '';
-  targetWord.style.color = 'black';
+  targetWord.style.color = 'white';
 
   startBtn.innerText = 'Start';
 };
