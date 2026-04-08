@@ -2,6 +2,7 @@
 
 import { getElement, select, listen } from './utils.js';
 
+
 const targetWord = getElement('current-word');
 const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
