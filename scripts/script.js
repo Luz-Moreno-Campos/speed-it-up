@@ -99,18 +99,15 @@ const checkWord = function () {
   const current = targetWord.innerText.trim();
 
   if (typed === current) {
-    inputField.style.color = 'green';
+    inputField.style.color = 'white';
     displayWord();
     inputField.value = '';
-    inputField.style.color = 'black';
     return;
-
   } else if (!current.startsWith(typed)) {
     inputField.style.color = 'red';
   }
-
   else {
-    inputField.style.color = 'green';
+    inputField.style.color = 'white';
   }
 
 }

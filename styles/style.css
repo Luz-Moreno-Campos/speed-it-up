@@ -13,7 +13,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-position: center;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -55,8 +54,8 @@ main {
 
 
 #game-box {
-     background: none !important;
-    background: rgba(25, 25, 25, 0.9);
+   
+    background: rgba(25, 25, 25, 0.3);
     backdrop-filter: blur(20px);
     padding: 40px;
     border-radius: 20px;
@@ -96,12 +95,12 @@ main {
     font-size: 30px;
     font-weight: 900;
     margin: 10px 0;
-    padding: 20px;
+    padding: 10px;
     width: 100%;
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.05);
     color: #ffffff;
-    min-height: 90px;
+    min-height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,7 +111,7 @@ main {
     width: 100%;
     max-width: 350px;
     padding: 15px;
-    font-size: 20px;
+    font-size: 25px;
     border-radius: 10px;
     border: 2px solid #333;
     background: #1a1a1a;
@@ -128,13 +127,22 @@ main {
 }
 
 button#start-btn {
-    padding: 15px 45px;
+    padding: 10px 40px;
     font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
     border-radius: 10px;
     border: none;
-    background: #ff006e;
+    background: rgb(243, 97, 6);
+   box-shadow:
+    0 0 12px rgba(251, 68, 1, 1),
+    0 0 28px rgba(255, 120, 0, 0.8),
+    0 0 45px rgb(247, 247, 11, 0.6),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+
+    inset 0 0 8px rgba(255, 255, 255, 0.25);
+
     color: white;
     cursor: pointer;
     transition: all 0.2s ease;
