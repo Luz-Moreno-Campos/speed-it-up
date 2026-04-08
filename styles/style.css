@@ -4,4 +4,21 @@
 =======
 @charset "utf-8";
 @import "./reset.css";
+<<<<<<< HEAD
 >>>>>>> e854b7e (link css)
+=======
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #3a86ff, #8338ec);
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+>>>>>>> b384aab (edit the body part)
