@@ -1,14 +1,17 @@
 "use strict";
 
-import './score.js';
-export {};
+import { showFinalScore, bgMusic } from './score.js';
 import { getElement, select, listen } from './utils.js';
+
+
 
 const targetWord = getElement('current-word');
 const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
 const timeCounter = getElement('time-remaining');
 const gameMessage = getElement('game-status');
+const hitsDisplay = getElement('hits-count');
+
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money',
@@ -36,6 +39,7 @@ const displayWord = function () {
 
   if (words.length === 0) {
     stopGame('Game Over!');
+    showFinalScore(hits, attempts);
     return;
   }
 
@@ -50,6 +54,8 @@ const displayWord = function () {
 let timeLeft = 99;
 let timer = null;
 let gameRunning = false;
+let hits = 0;
+let attempts = 0;
 
 const startGame = function () {
   gameMessage.innerText = 'Go!';
@@ -57,6 +63,12 @@ const startGame = function () {
   startBtn.innerText = 'Stop';
   timeLeft = 99;
   timeCounter.innerText = timeLeft;
+  bgMusic.currentTime = 0;
+  bgMusic.play();
+  hits = 0;
+  attempts = 0;
+  hitsDisplay.innerText = 0;
+
   displayWord();
   inputField.value = '';
   inputField.disabled = false;
@@ -73,6 +85,7 @@ function startCountdown() {
 
     if (timeLeft <= 0) {
       stopGame('Game Over!');
+      showFinalScore(hits, attempts);
     } else {
       startCountdown();
     }
@@ -86,6 +99,10 @@ const stopGame = function (message) {
 
   inputField.disabled = true;
   inputField.value = '';
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+
+
 
   gameMessage.innerText = message;
   targetWord.innerText = '';
@@ -95,11 +112,13 @@ const stopGame = function (message) {
 };
 
 
-
 const checkWord = function () {
   const typed = inputField.value.trim();
   const current = targetWord.innerText.trim();
   if (typed === current) {
+    hits++;
+    attempts++;
+    hitsDisplay.innerText = hits;
     inputField.style.color = 'white';
     displayWord();
     inputField.value = '';
@@ -111,6 +130,8 @@ const checkWord = function () {
     inputField.style.color = 'white';
   }
 
+
+
 }
 
 listen('click', startBtn, () => {
@@ -119,6 +140,9 @@ listen('click', startBtn, () => {
   } else {
     timeLeft = 99;
     timeCounter.innerText = 99;
+    hits = 0;
+    attempts = 0;
+    hitsDisplay.innerText = 0;
     stopGame('Play Again!');
   }
 });
