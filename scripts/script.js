@@ -99,7 +99,6 @@ const stopGame = function (message) {
 const checkWord = function () {
   const typed = inputField.value.trim();
   const current = targetWord.innerText.trim();
-
   if (typed === current) {
     inputField.style.color = 'white';
     displayWord();
