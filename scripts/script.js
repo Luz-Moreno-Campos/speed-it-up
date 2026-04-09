@@ -10,7 +10,10 @@ const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
 const timeCounter = getElement('time-remaining');
 const gameMessage = getElement('game-status');
+const originalMessage = gameMessage.innerText;
 const hitsDisplay = getElement('hits-count');
+const gameOverOverlay = getElement('game-over-overlay');
+const playAgainBtn = getElement('play-again-btn');
 
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
@@ -101,12 +104,12 @@ const stopGame = function (message) {
   inputField.value = '';
   bgMusic.pause();
   bgMusic.currentTime = 0;
-
-
-
-  gameMessage.innerText = message;
+  gameMessage.innerText = message || originalMessage;
   targetWord.innerText = '';
   targetWord.style.color = 'white';
+
+  timeLeft = 99;
+  timeCounter.innerText = 99;
 
   startBtn.innerText = 'Start';
 };
@@ -130,9 +133,8 @@ const checkWord = function () {
     inputField.style.color = 'white';
   }
 
-
-
 }
+
 
 listen('click', startBtn, () => {
   if (!gameRunning) {
@@ -148,6 +150,12 @@ listen('click', startBtn, () => {
 });
 
 listen('input', inputField, checkWord)
+
+
+listen('click', playAgainBtn, () => {
+  gameOverOverlay.classList.add('hidden');
+  stopGame(); 
+});
 
 
 

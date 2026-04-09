@@ -45,7 +45,4 @@ export function showFinalScore(hits, attempts) {
   gameOverOverlay.classList.remove('hidden');
 }
 
-playAgainBtn.addEventListener('click', () => {
-  gameOverOverlay.classList.add('hidden');
-   startBtn.click();
-});
+
