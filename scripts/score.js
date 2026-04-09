@@ -1,8 +1,5 @@
 "use strict";
 
-
-
-
 export class Score {
   #date;
   #hits;
@@ -67,3 +64,4 @@ export function handleSuccess() {
   successSound.currentTime = 0;
   successSound.play();
 }
+
