@@ -4,7 +4,6 @@ import { Score } from './score.js';
 import { getElement, select, listen } from './utils.js';
 
 
-
 const targetWord = getElement('current-word');
 const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
@@ -15,7 +14,6 @@ const hitsDisplay = getElement('hits-count');
 const gameOverOverlay = getElement('game-over-overlay');
 const scoreBody = getElement('score-body');
 const playAgainBtn = getElement('play-again-btn');
-
 
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
@@ -33,7 +31,6 @@ const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'leather', 'planet', 'software', 'update', 'yellow', 'keyboard', 'window'];
 
 
-
 inputField.disabled = true;
 
 const getRandomWord = function (words) {
@@ -46,6 +43,7 @@ const displayWord = function () {
   if (words.length === 0) {
     stopGame('Game Over!');
     setTimeout(() => {
+      gameOverSound.play();
       showFinalScore(hits, totalWords);
     }, 1000);
     return;
@@ -62,9 +60,12 @@ let timer = null;
 let gameRunning = false;
 let hits = 0;
 
-const bgMusic = new Audio('./media/audio.mp3');
+const bgMusic = new Audio('./media/background-music.mp3');
 bgMusic.loop = true;
 bgMusic.volume = 0.3;
+
+const gameOverSound = new Audio('./media/game-over-sound.mp3');
+gameOverSound.volume = 0.5;
 
 const startGame = function () {
   gameMessage.innerText = 'Go!';
@@ -88,11 +89,14 @@ const startGame = function () {
 function startCountdown() {
   timer = setTimeout(() => {
     timeLeft--;
-    timeCounter.innerText = timeLeft;
+    timeCounter.innerText = String(timeLeft).padStart(2, "0");
+    //padStart() method adds a zero before the number when needed to preserve size consistency in counter.
+
 
     if (timeLeft <= 0) {
       stopGame('Game Over!');
       setTimeout(() => {
+        gameOverSound.play();
         showFinalScore(hits, totalWords);
       }, 1000);
     } else {
@@ -152,10 +156,8 @@ const showFinalScore = function (hits, totalWords) {
 
   scoreBody.innerHTML = row + scoreBody.innerHTML;
 
-
   gameOverOverlay.classList.remove('hidden');
 }
-
 
 
 listen('click', startBtn, () => {
@@ -170,6 +172,12 @@ listen('click', startBtn, () => {
   }
 });
 
+listen('beforeinput', inputField, (inputEvent) => { // The beforeinput event fires before text is inserted.
+  if (inputEvent.data && inputEvent.data.length > 1) {
+    inputEvent.preventDefault(); //this method blocks multi-character insertions, preventing copy-paste.
+  }
+});
+
 listen('input', inputField, checkWord)
 
 
@@ -177,7 +185,6 @@ listen('click', playAgainBtn, () => {
   gameOverOverlay.classList.add('hidden');
   hits = 0;
   hitsDisplay.innerText = 0;
-
   stopGame();
 
 });
