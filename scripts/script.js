@@ -1,14 +1,20 @@
 "use strict";
 
-import './score.js';
-export {};
+import { showFinalScore, bgMusic } from './score.js';
 import { getElement, select, listen } from './utils.js';
+
+
 
 const targetWord = getElement('current-word');
 const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
 const timeCounter = getElement('time-remaining');
 const gameMessage = getElement('game-status');
+const originalMessage = gameMessage.innerText;
+const hitsDisplay = getElement('hits-count');
+const gameOverOverlay = getElement('game-over-overlay');
+const playAgainBtn = getElement('play-again-btn');
+
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money',
@@ -24,6 +30,7 @@ const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'interview', 'awesome', 'challenge', 'science', 'mystery', 'famous', 'league', 'memory',
   'leather', 'planet', 'software', 'update', 'yellow', 'keyboard', 'window'];
 
+const totalWords = 99;  
 
 inputField.disabled = true;
 
@@ -36,13 +43,12 @@ const displayWord = function () {
 
   if (words.length === 0) {
     stopGame('Game Over!');
+    showFinalScore(hits, totalWords);
     return;
   }
 
   const nextWord = getRandomWord(words);
   targetWord.innerText = nextWord;
-
-
 
 }
 
@@ -50,6 +56,8 @@ const displayWord = function () {
 let timeLeft = 99;
 let timer = null;
 let gameRunning = false;
+let hits = 0;
+let attempts = 0;
 
 const startGame = function () {
   gameMessage.innerText = 'Go!';
@@ -57,6 +65,12 @@ const startGame = function () {
   startBtn.innerText = 'Stop';
   timeLeft = 99;
   timeCounter.innerText = timeLeft;
+  bgMusic.currentTime = 0;
+  bgMusic.play();
+  hits = 0;
+  attempts = 0;
+  hitsDisplay.innerText = 0;
+
   displayWord();
   inputField.value = '';
   inputField.disabled = false;
@@ -73,6 +87,7 @@ function startCountdown() {
 
     if (timeLeft <= 0) {
       stopGame('Game Over!');
+      showFinalScore(hits, totalWords);
     } else {
       startCountdown();
     }
@@ -82,25 +97,26 @@ function startCountdown() {
 
 const stopGame = function (message) {
   gameRunning = false;
-  clearTimeout(timer);
-
+  clearTimeout(timer); //this is a built-in function that stops the timer countdown
   inputField.disabled = true;
   inputField.value = '';
-
-  gameMessage.innerText = message;
+  bgMusic.pause();
+  bgMusic.currentTime = 0; //this resets the music from the beginning
+  gameMessage.innerText = message || originalMessage;
   targetWord.innerText = '';
   targetWord.style.color = 'white';
-
+  timeLeft = 99;
+  timeCounter.innerText = 99;
   startBtn.innerText = 'Start';
 };
 
 
-
 const checkWord = function () {
-  const typed = inputField.value.trim();
+  const typed = inputField.value.trim().toLowerCase();
   const current = targetWord.innerText.trim();
-
   if (typed === current) {
+    hits++;
+    hitsDisplay.innerText = hits;
     inputField.style.color = 'white';
     displayWord();
     inputField.value = '';
@@ -114,17 +130,32 @@ const checkWord = function () {
 
 }
 
+
 listen('click', startBtn, () => {
   if (!gameRunning) {
     startGame();
   } else {
     timeLeft = 99;
     timeCounter.innerText = 99;
+    hits = 0;
+    hitsDisplay.innerText = 0;
     stopGame('Play Again!');
   }
 });
 
 listen('input', inputField, checkWord)
+
+
+listen('click', playAgainBtn, () => {
+  gameOverOverlay.classList.add('hidden');
+
+  hits = 0;
+  attempts = 0;
+  hitsDisplay.innerText = 0;
+
+  stopGame();
+
+});
 
 
 
