@@ -4,7 +4,6 @@ import { Score } from './score.js';
 import { getElement, select, listen } from './utils.js';
 
 
-
 const targetWord = getElement('current-word');
 const inputField = getElement('word-input');
 const startBtn = getElement('start-btn');
@@ -15,7 +14,6 @@ const hitsDisplay = getElement('hits-count');
 const gameOverOverlay = getElement('game-over-overlay');
 const scoreBody = getElement('score-body');
 const playAgainBtn = getElement('play-again-btn');
-
 
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
@@ -31,7 +29,6 @@ const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'library', 'unboxing', 'bookstore', 'language', 'homework', 'fantastic', 'economy',
   'interview', 'awesome', 'challenge', 'science', 'mystery', 'famous', 'league', 'memory',
   'leather', 'planet', 'software', 'update', 'yellow', 'keyboard', 'window'];
-
 
 
 inputField.disabled = true;
@@ -161,7 +158,6 @@ const showFinalScore = function (hits, totalWords) {
 
   gameOverOverlay.classList.remove('hidden');
 }
-
 
 
 listen('click', startBtn, () => {
