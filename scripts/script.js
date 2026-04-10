@@ -70,7 +70,7 @@ const startGame = function () {
   gameMessage.innerText = 'Go!';
   gameRunning = true;
   startBtn.innerText = 'Stop';
-  timeLeft = 99;
+  timeLeft = 12;
   timeCounter.innerText = timeLeft;
   bgMusic.currentTime = 0;
   bgMusic.play();
@@ -88,7 +88,9 @@ const startGame = function () {
 function startCountdown() {
   timer = setTimeout(() => {
     timeLeft--;
-    timeCounter.innerText = timeLeft;
+    timeCounter.innerText = String(timeLeft).padStart(2, "0");  
+    //padStart() method adds a zero before the number when needed to preserve size consistency in counter.
+    
 
     if (timeLeft <= 0) {
       stopGame('Game Over!');
