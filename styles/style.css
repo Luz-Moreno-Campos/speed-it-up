@@ -185,14 +185,14 @@ button#start-btn:hover {
     padding: 45px;
     border-radius: 20px;
     text-align: center;
-    border: 2px solid #ff006e;
+    border: 2px solid #ff8800;
     width: 90%;
     max-width: 420px;
 
     box-shadow:
-        0 0 10px rgba(255, 0, 110, 0.6),
-        0 0 25px rgba(255, 0, 110, 0.4),
-        0 0 50px rgba(255, 0, 110, 0.2);
+        0 0 10px rgba(255, 115, 0, 0.6),
+        0 0 25px rgba(255, 145, 0, 0.4),
+        0 0 50px rgba(255, 115, 0, 0.2);
 
     animation: popup 0.5s ease;
 }
@@ -214,7 +214,7 @@ button#start-btn:hover {
     letter-spacing: 1px;
     text-shadow:
         0 0 8px rgba(255,255,255,0.8),
-        0 0 15px rgba(255,0,110,0.7);
+        0 0 15px rgba(255, 102, 0, 0.7);
 }
 
 #score-table {
