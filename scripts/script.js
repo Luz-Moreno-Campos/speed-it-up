@@ -49,8 +49,6 @@ const displayWord = function () {
   const nextWord = getRandomWord(words);
   targetWord.innerText = nextWord;
 
-
-
 }
 
 
@@ -98,25 +96,22 @@ function startCountdown() {
 
 const stopGame = function (message) {
   gameRunning = false;
-  clearTimeout(timer);
-
+  clearTimeout(timer); //this is a built-in function that stops the timer countdown
   inputField.disabled = true;
   inputField.value = '';
   bgMusic.pause();
-  bgMusic.currentTime = 0;
+  bgMusic.currentTime = 0; //this resets the music from the beginning
   gameMessage.innerText = message || originalMessage;
   targetWord.innerText = '';
   targetWord.style.color = 'white';
-
   timeLeft = 99;
   timeCounter.innerText = 99;
-
   startBtn.innerText = 'Start';
 };
 
 
 const checkWord = function () {
-  const typed = inputField.value.trim();
+  const typed = inputField.value.trim().toLowerCase();
   const current = targetWord.innerText.trim();
   if (typed === current) {
     hits++;
@@ -154,7 +149,7 @@ listen('input', inputField, checkWord)
 
 listen('click', playAgainBtn, () => {
   gameOverOverlay.classList.add('hidden');
-  stopGame(); 
+  stopGame();
 });
 
 
