@@ -46,6 +46,7 @@ const displayWord = function () {
   if (words.length === 0) {
     stopGame('Game Over!');
     setTimeout(() => {
+      gameOverSound.play();
       showFinalScore(hits, totalWords);
     }, 1000);
     return;
@@ -65,6 +66,9 @@ let hits = 0;
 const bgMusic = new Audio('./media/audio.mp3');
 bgMusic.loop = true;
 bgMusic.volume = 0.3;
+
+const gameOverSound = new Audio('./media/game-over-sound.mp3');
+gameOverSound.volume = 0.5;
 
 const startGame = function () {
   gameMessage.innerText = 'Go!';
@@ -88,13 +92,14 @@ const startGame = function () {
 function startCountdown() {
   timer = setTimeout(() => {
     timeLeft--;
-    timeCounter.innerText = String(timeLeft).padStart(2, "0");  
+    timeCounter.innerText = String(timeLeft).padStart(2, "0");
     //padStart() method adds a zero before the number when needed to preserve size consistency in counter.
-    
+
 
     if (timeLeft <= 0) {
       stopGame('Game Over!');
       setTimeout(() => {
+        gameOverSound.play();
         showFinalScore(hits, totalWords);
       }, 1000);
     } else {
@@ -154,7 +159,6 @@ const showFinalScore = function (hits, totalWords) {
 
   scoreBody.innerHTML = row + scoreBody.innerHTML;
 
-
   gameOverOverlay.classList.remove('hidden');
 }
 
@@ -181,14 +185,10 @@ listen('beforeinput', inputField, (inputEvent) => { // The beforeinput event fir
 listen('input', inputField, checkWord)
 
 
-
-
-
 listen('click', playAgainBtn, () => {
   gameOverOverlay.classList.add('hidden');
   hits = 0;
   hitsDisplay.innerText = 0;
-
   stopGame();
 
 });
