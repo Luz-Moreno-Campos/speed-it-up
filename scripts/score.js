@@ -26,8 +26,8 @@ const scoreBody = document.getElementById('score-body');
 const gameOverOverlay = document.getElementById('game-over-overlay');
 const playAgainBtn = document.getElementById('play-again-btn');
 
-export function showFinalScore(hits, attempts) {
-  const percentage = attempts === 0 ? 0 : ((hits / attempts) * 100).toFixed(2);
+export function showFinalScore(hits, totalWords) {
+  const percentage = totalWords === 0 ? 0 : Math.round((hits / totalWords) * 100);
   const date = new Date().toLocaleDateString();
   const score = new Score(date, hits, percentage);
 

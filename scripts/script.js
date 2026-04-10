@@ -30,6 +30,7 @@ const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'interview', 'awesome', 'challenge', 'science', 'mystery', 'famous', 'league', 'memory',
   'leather', 'planet', 'software', 'update', 'yellow', 'keyboard', 'window'];
 
+const totalWords = 99;  
 
 inputField.disabled = true;
 
@@ -42,7 +43,7 @@ const displayWord = function () {
 
   if (words.length === 0) {
     stopGame('Game Over!');
-    showFinalScore(hits, attempts);
+    showFinalScore(hits, totalWords);
     return;
   }
 
@@ -86,7 +87,7 @@ function startCountdown() {
 
     if (timeLeft <= 0) {
       stopGame('Game Over!');
-      showFinalScore(hits, attempts);
+      showFinalScore(hits, totalWords);
     } else {
       startCountdown();
     }
@@ -115,7 +116,6 @@ const checkWord = function () {
   const current = targetWord.innerText.trim();
   if (typed === current) {
     hits++;
-    attempts++;
     hitsDisplay.innerText = hits;
     inputField.style.color = 'white';
     displayWord();
@@ -138,7 +138,6 @@ listen('click', startBtn, () => {
     timeLeft = 99;
     timeCounter.innerText = 99;
     hits = 0;
-    attempts = 0;
     hitsDisplay.innerText = 0;
     stopGame('Play Again!');
   }
@@ -149,7 +148,13 @@ listen('input', inputField, checkWord)
 
 listen('click', playAgainBtn, () => {
   gameOverOverlay.classList.add('hidden');
+
+  hits = 0;
+  attempts = 0;
+  hitsDisplay.innerText = 0;
+
   stopGame();
+
 });
 
 
