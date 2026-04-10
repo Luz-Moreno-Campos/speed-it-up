@@ -63,7 +63,7 @@ let timer = null;
 let gameRunning = false;
 let hits = 0;
 
-const bgMusic = new Audio('./media/audio.mp3');
+const bgMusic = new Audio('./media/background-music.mp3');
 bgMusic.loop = true;
 bgMusic.volume = 0.3;
 
@@ -74,7 +74,7 @@ const startGame = function () {
   gameMessage.innerText = 'Go!';
   gameRunning = true;
   startBtn.innerText = 'Stop';
-  timeLeft = 12;
+  timeLeft = 99;
   timeCounter.innerText = timeLeft;
   bgMusic.currentTime = 0;
   bgMusic.play();
