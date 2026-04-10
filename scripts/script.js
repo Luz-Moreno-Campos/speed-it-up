@@ -170,7 +170,16 @@ listen('click', startBtn, () => {
   }
 });
 
+listen('beforeinput', inputField, (inputEvent) => { // The beforeinput event fires before text is inserted.
+  if (inputEvent.data && inputEvent.data.length > 1) {
+    inputEvent.preventDefault(); //this method blocks multi-character insertions, preventing copy-paste.
+  }
+});
+
 listen('input', inputField, checkWord)
+
+
+
 
 
 listen('click', playAgainBtn, () => {
