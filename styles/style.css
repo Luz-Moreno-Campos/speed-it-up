@@ -69,20 +69,22 @@ main {
 
 #game-status {
     font-size: 32px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-weight: bolder;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
 #game-box p, 
 #game-box #timer, 
 #game-box #hits {
     color: #ffffff; 
-    font-size: 25px;
+    font-size: 30px;
+    font-weight: bold;
     line-height: 25px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
 #game-box #time-remaining {
-    font-weight: bold;
+    font-weight: bolder;
     color: #ffd166; 
 }
 
