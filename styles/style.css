@@ -160,24 +160,41 @@ button#start-btn:hover {
 }
 
 #game-over-overlay {
+    
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+
     z-index: 1000;
+
+    animation: fadeOverlay 0.4s ease;
 }
 
+
 #game-over-box {
-    background: #1a1a1a;
-    padding: 40px;
+    background: linear-gradient(145deg, rgba(35,35,45,0.9), rgba(20,20,30,0.9));
+    padding: 45px;
     border-radius: 20px;
     text-align: center;
-    border: 2px solid #ff006e;
+    border: 2px solid #ff8800;
     width: 90%;
-    max-width: 400px;
+    max-width: 420px;
+
+    box-shadow:
+        0 0 10px rgba(255, 115, 0, 0.6),
+        0 0 25px rgba(255, 145, 0, 0.4),
+        0 0 50px rgba(255, 115, 0, 0.2);
+
+    animation: popup 0.5s ease;
 }
 
 
@@ -190,3 +207,67 @@ button#start-btn:hover {
     }
 }
 
+#game-over-box h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.8),
+        0 0 15px rgba(255, 102, 0, 0.7);
+}
+
+#score-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#score-table th,
+#score-table td {
+    text-align: center;
+    padding: 12px 25px;
+    color: #ffd166;
+    font-size: 17px;
+}
+
+
+#play-again-btn {
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    background: rgb(243, 97, 6); /* same orange as start button */
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#play-again-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255,120,0,0.8);
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
