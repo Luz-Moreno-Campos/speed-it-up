@@ -1,6 +1,6 @@
 "use strict";
 
-import { showFinalScore, bgMusic } from './score.js';
+import {Score} from './score.js';
 import { getElement, select, listen } from './utils.js';
 
 
@@ -13,7 +13,9 @@ const gameMessage = getElement('game-status');
 const originalMessage = gameMessage.innerText;
 const hitsDisplay = getElement('hits-count');
 const gameOverOverlay = getElement('game-over-overlay');
+const scoreBody = getElement('score-body');
 const playAgainBtn = getElement('play-again-btn');
+
 
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
@@ -30,7 +32,7 @@ const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'interview', 'awesome', 'challenge', 'science', 'mystery', 'famous', 'league', 'memory',
   'leather', 'planet', 'software', 'update', 'yellow', 'keyboard', 'window'];
 
-const totalWords = 99;  
+
 
 inputField.disabled = true;
 
@@ -52,12 +54,15 @@ const displayWord = function () {
 
 }
 
-
+let totalWords = 99;  
 let timeLeft = 99;
 let timer = null;
 let gameRunning = false;
 let hits = 0;
-let attempts = 0;
+
+const bgMusic = new Audio('./media/audio.mp3');
+bgMusic.loop = true;
+bgMusic.volume = 0.3;
 
 const startGame = function () {
   gameMessage.innerText = 'Go!';
@@ -68,9 +73,7 @@ const startGame = function () {
   bgMusic.currentTime = 0;
   bgMusic.play();
   hits = 0;
-  attempts = 0;
   hitsDisplay.innerText = 0;
-
   displayWord();
   inputField.value = '';
   inputField.disabled = false;
@@ -78,6 +81,7 @@ const startGame = function () {
   startCountdown();
 
 }
+
 
 
 function startCountdown() {
@@ -130,6 +134,25 @@ const checkWord = function () {
 
 }
 
+const showFinalScore = function(hits, totalWords) {
+  const percentage = totalWords === 0 ? 0 : Math.round((hits / totalWords) * 100);
+  const date = new Date().toLocaleDateString();
+  const score = new Score(date, hits, percentage);
+
+  const row = `
+    <tr>
+      <td>${score.date}</td>
+      <td>${score.hits}</td>
+      <td>${score.percentage}%</td>
+    </tr>
+  `;
+
+  scoreBody.innerHTML = row + scoreBody.innerHTML;
+
+
+  gameOverOverlay.classList.remove('hidden');
+}
+
 
 listen('click', startBtn, () => {
   if (!gameRunning) {
@@ -148,9 +171,7 @@ listen('input', inputField, checkWord)
 
 listen('click', playAgainBtn, () => {
   gameOverOverlay.classList.add('hidden');
-
   hits = 0;
-  attempts = 0;
   hitsDisplay.innerText = 0;
 
   stopGame();
