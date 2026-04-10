@@ -1,6 +1,6 @@
 "use strict";
 
-import {Score} from './score.js';
+import { Score } from './score.js';
 import { getElement, select, listen } from './utils.js';
 
 
@@ -45,7 +45,9 @@ const displayWord = function () {
 
   if (words.length === 0) {
     stopGame('Game Over!');
-    showFinalScore(hits, totalWords);
+    setTimeout(() => {
+      showFinalScore(hits, totalWords);
+    }, 1000);
     return;
   }
 
@@ -54,7 +56,7 @@ const displayWord = function () {
 
 }
 
-let totalWords = 99;  
+let totalWords = 90;
 let timeLeft = 99;
 let timer = null;
 let gameRunning = false;
@@ -83,7 +85,6 @@ const startGame = function () {
 }
 
 
-
 function startCountdown() {
   timer = setTimeout(() => {
     timeLeft--;
@@ -91,7 +92,9 @@ function startCountdown() {
 
     if (timeLeft <= 0) {
       stopGame('Game Over!');
-      showFinalScore(hits, totalWords);
+      setTimeout(() => {
+        showFinalScore(hits, totalWords);
+      }, 1000);
     } else {
       startCountdown();
     }
@@ -134,7 +137,7 @@ const checkWord = function () {
 
 }
 
-const showFinalScore = function(hits, totalWords) {
+const showFinalScore = function (hits, totalWords) {
   const percentage = totalWords === 0 ? 0 : Math.round((hits / totalWords) * 100);
   const date = new Date().toLocaleDateString();
   const score = new Score(date, hits, percentage);
@@ -152,6 +155,7 @@ const showFinalScore = function(hits, totalWords) {
 
   gameOverOverlay.classList.remove('hidden');
 }
+
 
 
 listen('click', startBtn, () => {
