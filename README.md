@@ -64,7 +64,7 @@ At the end, a **Game Over overlay** displays the final results.
 
 ## 🎥 Demo
 
-👉 **Play the game here:**  
+👉 **Play the game here:**  https://luz-moreno-campos.github.io/speed-it-up/ 
 
 
 ---
