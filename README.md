@@ -1,14 +1,13 @@
 # 🚀 Speed It Up! – Typing Game
 
 ## 🎮 Overview
-**Speed It Up!** is a fast-paced typing game where players must type words quickly and accurately before the timer runs out ⏱️.
+**Speed It Up!** is a fast-paced typing game where players must type words quickly before the timer runs out .
 
 The game tracks:
-- 🎯 Hits (correct words)
-- 📊 Accuracy percentage
-- 📅 Date of the game
+- 🎯 Hits 
+- 📊 Percentage of words typed based on total words
 
-At the end, a **Game Over overlay** displays the final score.
+At the end, a **Game Over overlay** displays the final results.
 
 ---
 
@@ -18,83 +17,64 @@ At the end, a **Game Over overlay** displays the final score.
 - ⌨️ Real-time typing validation  
 - 🎯 Hit counter  
 - 🔀 Random word generation  
-- 📊 Score calculation  
-- 🧾 Score table (Date, Hits, Percentage)  
-- 🔊 Background music  
-- 🪟 Game Over popup overlay  
-- 🔁 Play Again button (no reload)  
-- 🎨 Modern UI with blur + animations  
+- 📊 Percentage calculation based on total words  
+- 🧾 Score table display (Date, Hits, Percentage)  
+- 🔊 Background music 
+- 🔊 Game over sound effect  
+- 🪟 Game Over overlay popup  
+- 🔁 Play Again button   
+- 🎨 Animated UI with blur and glow effects  
 
 ---
 
 ## 🛠️ Technologies Used
 
-- HTML 
+- HTML  
 - CSS  
 - JavaScript   
 
 ---
 
-## 🧠 Game Logic Explanation
 
-### 🔹 Start Game
-- User clicks **Start**
-- Timer begins
-- Background music starts
-- Input is enabled
+## 🧠 Game Logic
 
----
+### 🔹 Word System
+- Words are stored in an array  
+- Random word is displayed each time  
 
-### 📦 Stores:
-- 📅 Date  
-- 🎯 Hits  
-- 📊 Percentage  
+### 🔹 Typing System
+- Correct word → increases hits  
+- Incorrect typing → input turns red  
 
----
+### 🔹 Timer
+- Countdown from 99 seconds  
+- Game ends when timer reaches 0  
+
+### 🔹 Score System
+- Calculates percentage based on total words  
+- Displays results in a table  
 
 ### 🔹 Game Over
 - Stops timer  
-- Stops music  
-- Calculates score  
-- Shows overlay  
+- Stops background music  
+- Plays game over sound  
+- Displays overlay with score  
 
 ---
 
-### 🎨 UI Highlights
-- 🌫️ Glass blur background  
-- ✨ Popup animation  
-- 🔥 Glow effects  
-- 📱 Responsive design  
+## 🎥 Demo
+
+👉 **Play the game here:**  
+
 
 ---
 
-### ▶️ How to Run
-1. Open project folder  
-2. Open `index.html`  
-3. Click **Start**  
-4. Play the game 🎮  
+## 👩‍💻 Authors
 
----
-
-### 📚 Learning Outcomes
-- DOM manipulation  
-- Event handling  
-- JavaScript modules  
-- Game logic building  
-- CSS animations  
-  
-
----
-
-### 🚀 Future Improvements
-- 🏆 Leaderboard  
-- 🎯 Difficulty levels  
-- 📱 Mobile support  
-- 🎵 More sounds  
-- 🌍 Categories  
-
----
-
-### 👩‍💻 Authors
+- Prabh  
 - Luz  
-- Prabh
+
+---
+
+
+
