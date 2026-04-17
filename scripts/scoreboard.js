@@ -1,9 +1,5 @@
 'use strict'
 
-
-import { getElement, select, listen } from './utils.js';
-
-
 export function getSavedScores() {
   const savedScore = localStorage.getItem("scores");
   return savedScore ? JSON.parse(savedScore) : [];
@@ -21,7 +17,6 @@ export function saveScore(date, hits, percentage) {
 
   localStorage.setItem('scores', JSON.stringify(scores));
 }
-
 
 export function buildScoresTable(scoreBody, scores) {
  
