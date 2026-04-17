@@ -2,7 +2,7 @@
 
 import { Score } from './score.js';
 import { getElement, select, listen } from './utils.js';
-import {saveScore,getSavedScores} from './scoreboard.js';
+import {saveScore,getSavedScores, buildScoresTable} from './scoreboard.js';
 
 
 const targetWord = getElement('current-word');

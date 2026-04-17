@@ -4,9 +4,14 @@
 import { getElement, select, listen } from './utils.js';
 
 
- const scores = [];
+export function getSavedScores() {
+  const savedScore = localStorage.getItem("scores");
+  return savedScore ? JSON.parse(savedScore) : [];
+}
 
- export function saveScore(date, hits, percentage) {
+const scores = getSavedScores();
+
+export function saveScore(date, hits, percentage) {
   const score = { date, hits, percentage };
 
   scores.push(score);
@@ -17,9 +22,8 @@ import { getElement, select, listen } from './utils.js';
   localStorage.setItem('scores', JSON.stringify(scores));
 }
 
-export function getSavedScores() {
-  const savedScore = localStorage.getItem("scores");
-  return savedScore ? JSON.parse(savedScore) : [];
-}
+
+
+
 
 
