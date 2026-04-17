@@ -2,6 +2,7 @@
 
 import { Score } from './score.js';
 import { getElement, select, listen } from './utils.js';
+import { saveScore, getSavedScores, buildScoresTable } from './scoreboard.js';
 
 
 const targetWord = getElement('current-word');
@@ -14,6 +15,8 @@ const hitsDisplay = getElement('hits-count');
 const gameOverOverlay = getElement('game-over-overlay');
 const scoreBody = getElement('score-body');
 const playAgainBtn = getElement('play-again-btn');
+
+
 
 
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
@@ -116,7 +119,7 @@ const stopGame = function (message) {
   gameMessage.innerText = message || originalMessage;
   targetWord.innerText = '';
   targetWord.style.color = 'white';
-  timeLeft = 99;
+  timeLeft = 10;
   timeCounter.innerText = 99;
   startBtn.innerText = 'Start';
 };
@@ -146,6 +149,7 @@ const showFinalScore = function (hits, totalWords) {
   const date = new Date().toLocaleDateString();
   const score = new Score(date, hits, percentage);
 
+
   const row = `
     <tr>
       <td>${score.date}</td>
@@ -156,7 +160,7 @@ const showFinalScore = function (hits, totalWords) {
 
   scoreBody.innerHTML = row + scoreBody.innerHTML;
 
-  gameOverOverlay.classList.remove('hidden');
+  gameOverOverlay.classList.remove('hidden')
 }
 
 
