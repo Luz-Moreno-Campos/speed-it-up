@@ -2,7 +2,7 @@
 
 import { Score } from './score.js';
 import { getElement, select, listen } from './utils.js';
-import {saveScore} from './scoreboard.js';
+import {saveScore,getSavedScores} from './scoreboard.js';
 
 
 const targetWord = getElement('current-word');
@@ -146,8 +146,6 @@ const showFinalScore = function (hits, totalWords) {
   const percentage = totalWords === 0 ? 0 : Math.round((hits / totalWords) * 100);
   const date = new Date().toLocaleDateString();
   const score = new Score(date, hits, percentage);
-
-
   const row = `
     <tr>
       <td>${score.date}</td>
