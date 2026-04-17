@@ -23,7 +23,22 @@ export function saveScore(date, hits, percentage) {
 }
 
 
+export function buildScoresTable(scoreBody, scores) {
+ 
+  scoreBody.innerHTML = "";
 
+  scores.forEach(score => {
+    const row = `
+      <tr>
+        <td>${score.date}</td>
+        <td>${score.hits}</td>
+        <td>${score.percentage}%</td>
+      </tr>
+    `;
+
+    scoreBody.innerHTML += row;
+  });
+}
 
 
 
