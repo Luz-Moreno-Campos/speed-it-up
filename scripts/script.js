@@ -2,6 +2,7 @@
 
 import { Score } from './score.js';
 import { getElement, select, listen } from './utils.js';
+import {saveScore} from './scoreboard.js';
 
 
 const targetWord = getElement('current-word');
@@ -71,7 +72,7 @@ const startGame = function () {
   gameMessage.innerText = 'Go!';
   gameRunning = true;
   startBtn.innerText = 'Stop';
-  timeLeft = 99;
+  timeLeft = 10;
   timeCounter.innerText = timeLeft;
   bgMusic.currentTime = 0;
   bgMusic.play();
@@ -116,7 +117,7 @@ const stopGame = function (message) {
   gameMessage.innerText = message || originalMessage;
   targetWord.innerText = '';
   targetWord.style.color = 'white';
-  timeLeft = 99;
+  timeLeft = 10;
   timeCounter.innerText = 99;
   startBtn.innerText = 'Start';
 };
@@ -145,6 +146,7 @@ const showFinalScore = function (hits, totalWords) {
   const percentage = totalWords === 0 ? 0 : Math.round((hits / totalWords) * 100);
   const date = new Date().toLocaleDateString();
   const score = new Score(date, hits, percentage);
+
 
   const row = `
     <tr>
