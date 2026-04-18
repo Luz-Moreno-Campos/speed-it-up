@@ -119,7 +119,7 @@ const stopGame = function (message) {
   gameMessage.innerText = message || originalMessage;
   targetWord.innerText = '';
   targetWord.style.color = 'white';
-  timeLeft = 10;
+  timeLeft = 99;
   timeCounter.innerText = 99;
   startBtn.innerText = 'Start';
 };
@@ -151,7 +151,7 @@ const showFinalScore = function (hits, totalWords) {
 
   saveScore(score.date, score.hits, score.percentage);
   buildScoresTable(scoreBody, getSavedScores());
-  
+
   gameOverOverlay.classList.remove('hidden')
 }
 
@@ -186,5 +186,5 @@ listen('click', playAgainBtn, () => {
 });
 
 
-  buildScoresTable(scoreBody, getSavedScores());
+buildScoresTable(scoreBody, getSavedScores());
 
