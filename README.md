@@ -9,7 +9,7 @@ The game tracks:
 
 At the end, a **Game Over overlay** displays the final results.
 
----
+
 
 ## ✨ Features
 
@@ -18,14 +18,14 @@ At the end, a **Game Over overlay** displays the final results.
 - 🎯 Hit counter  
 - 🔀 Random word generation  
 - 📊 Percentage calculation based on total words  
-- 🧾 Score table display (Date, Hits, Percentage)  
+- 🏆 Top 9 Scoreboard display (Date, Hits, Percentage)    
 - 🔊 Background music 
 - 🔊 Game over sound effect  
 - 🪟 Game Over overlay popup  
 - 🔁 Play Again button   
 - 🎨 Animated UI with blur and glow effects  
 
----
+
 
 ## 🛠️ Technologies Used
 
@@ -33,7 +33,7 @@ At the end, a **Game Over overlay** displays the final results.
 - CSS  
 - JavaScript   
 
----
+
 
 
 ## 🧠 Game Logic
@@ -52,7 +52,13 @@ At the end, a **Game Over overlay** displays the final results.
 
 ### 🔹 Score System
 - Calculates percentage based on total words  
-- Displays results in a table  
+- Displays results in a scoreboard.
+
+### 🔹 Top 9 Scoreboard Logic
+- Each game creates a score entry (date, hits, percentage)
+- All saved scores are sorted by hits
+- Only the top 9 scores are kept
+- The updated list is shown when the game ends
 
 ### 🔹 Game Over
 - Stops timer  
@@ -60,21 +66,21 @@ At the end, a **Game Over overlay** displays the final results.
 - Plays game over sound  
 - Displays overlay with score  
 
----
+
 
 ## 🎥 Demo
 
 👉 **Play the game here:**  https://luz-moreno-campos.github.io/speed-it-up/ 
 
 
----
+
 
 ## 👩‍💻 Authors
 
 - Prabh  
 - Luz  
 
----
+
 
 
 
