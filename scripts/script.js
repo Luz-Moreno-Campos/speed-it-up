@@ -150,16 +150,7 @@ const showFinalScore = function (hits, totalWords) {
   const score = new Score(date, hits, percentage);
 
 
-  const row = `
-    <tr>
-      <td>${score.date}</td>
-      <td>${score.hits}</td>
-      <td>${score.percentage}%</td>
-    </tr>
-  `;
-
-  scoreBody.innerHTML = row + scoreBody.innerHTML;
-
+  
   gameOverOverlay.classList.remove('hidden')
 }
 
