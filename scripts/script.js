@@ -186,5 +186,5 @@ listen('click', playAgainBtn, () => {
 });
 
 
-
+  buildScoresTable(scoreBody, getSavedScores());
 
