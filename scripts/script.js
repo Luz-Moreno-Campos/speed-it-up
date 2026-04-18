@@ -149,7 +149,8 @@ const showFinalScore = function (hits, totalWords) {
   const date = new Date().toLocaleDateString();
   const score = new Score(date, hits, percentage);
 
-
+  saveScore(score.date, score.hits, score.percentage);
+  buildScoresTable(scoreBody, getSavedScores());
   
   gameOverOverlay.classList.remove('hidden')
 }
