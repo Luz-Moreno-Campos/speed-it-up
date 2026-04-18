@@ -232,14 +232,16 @@ button#start-btn:hover {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+
+    
 }
 
 #score-table th,
 #score-table td {
     text-align: center;
-    padding: 12px 25px;
+    padding: 8px 12px;
     color: #ffd166;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
@@ -289,3 +291,4 @@ button#start-btn:hover {
         opacity: 1;
     }
 }
+
