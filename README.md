@@ -66,7 +66,9 @@ At the end, a **Game Over overlay** displays the final results.
 - Plays game over sound  
 - Displays overlay with score  
 
+  ## Application Screenshot
 
+![Application Screenshot](/media/ScreenshotSpeedItUp.png)
 
 ## 🎥 Demo
 
