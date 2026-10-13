@@ -68,7 +68,8 @@ At the end, a **Game Over overlay** displays the final results.
 
   ## Application Screenshot
 
-![Application Screenshot](/media/ScreenshotSpeedItUp.png)
+![Application Screenshot](/media/gameStart.png)
+![Application Screenshot](/media/gameOver.png)
 
 ## 🎥 Demo
 
